@@ -14,7 +14,7 @@ import sys
 import tensorflow as tf
 from tensorflow import keras
 from typing import Any, List, Set
-from test_utils import generate_dill_unsafe_file,  PickleInject, get_pickle_payload
+from test_utils import generate_dill_unsafe_file, PickleInject, get_pickle_payload
 import torch
 from transformers import GPT2LMHeadModel
 import zipfile
