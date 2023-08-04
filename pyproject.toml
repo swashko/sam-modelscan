@@ -32,6 +32,8 @@ aiohttp = "^3.8.5"
 dill = "^0.3.7"
 pandas = "^2.0.3"
 requests = "^2.31.0"
+torch = "^2.0.1"
+transformers = "^4.31.0"
 
 [tool.poetry.group.dev.dependencies]
 dunamai = "^1.18.0"
