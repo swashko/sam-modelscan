@@ -47,7 +47,7 @@ jobs:
       - name: Load secret
         uses: 1password/load-secrets-action@v1
         env:
-          OP_SECRET: op://app-cicd/Better-Than-Bitwarden?/Password
+          OP_SECRET: op://app-cicd/"Better-Than-Bitwarden?"/Password
       - name: Run Tests
         run: |
           make test
