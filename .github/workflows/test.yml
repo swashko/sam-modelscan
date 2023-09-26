@@ -34,6 +34,20 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
           make install-test
+      - name: Get Bitwarden Secrets
+        uses: bitwarden/sm-action@v1
+        with:
+          access_token: ${{ secrets.BW_ACCESS_TOKEN }}
+          secrets: |
+            6b0baeba-4bd1-4c7d-b0c4-b0850005549d > BW_SECRET_1
+      - name: Configure 1Password Service Account
+        uses: 1password/load-secrets-action/configure@v1
+        with:
+          service-account-token: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        env:
+          OP_SECRET: op://app-cicd/"Better-Than-Bitwarden?"/Password
       - name: Run Tests
         run: |
           make test
