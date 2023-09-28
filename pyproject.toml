@@ -32,6 +32,7 @@ aiohttp = "^3.8.5"
 dill = "^0.3.7"
 pandas = "^2.0.3"
 requests = "^2.31.0"
+pytest-cov = "^4.1.0"
 
 [tool.poetry.group.dev.dependencies]
 dunamai = "^1.18.0"
