@@ -40,3 +40,5 @@ mypy:
 format:
 	black .
 
+coverage:
+	poetry run pytest -v --cov=./
