@@ -12,9 +12,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.8"]
-
-    permissions:
-        pull-requests: write
     outputs:
         testoutput: ${{ steps.step1.outputs.test }}
         coverage: ${{ steps.coverage.outputs.coverage-report }}
@@ -46,7 +43,7 @@ jobs:
         id: coverage
         run: |
             report=$(make coverage)
-            echo "coverage-report=$report" >> "$GITHUB_OUTPUT"
+            echo "coverage-report<<$report" >> "$GITHUB_OUTPUT"
 
   job2:   
     runs-on: ubuntu-latest
