@@ -36,7 +36,7 @@ jobs:
             pip install coverage
             pip install pytest
             poetry add coverage codecov
-            poetry run coverage run -m pytest
+            make coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
