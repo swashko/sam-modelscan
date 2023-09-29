@@ -40,10 +40,9 @@ jobs:
         run: |
           make install-test
       - name: Run Coverage
-        id: coverage
-        run: |
-            report="$(make coverage)"
-            echo "coverage-report<<$report" >> "$GITHUB_OUTPUT"
+        run: report="$(make coverage)"
+      - id: coverage
+        run: echo "coverage-report<<$report" >> "$GITHUB_OUTPUT"
 
   job2:   
     runs-on: ubuntu-latest
