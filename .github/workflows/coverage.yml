@@ -43,21 +43,20 @@ jobs:
           make install-test
       - name: Run Coverage
         run: |
-          make test
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-            token: ${{ secrets.CODECOV_TOKEN }}
+          make coverage
+
   job2:   
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     needs: job1
     steps:
-      - uses: mshick/add-pr-comment@v2
+      - name: Post Comment
+        uses: mshick/add-pr-comment@v2
         with:
             message: |
                 **Hello**
                 🌏 - separate job
-                ${{needs.job1.outputs.testoutput}}
-      - run: echo ${{needs.job1.outputs.testoutput}}
+                [${{needs.job1.outputs.testoutput}}]
+      - name: Echo
+        run: echo [${{needs.job1.outputs.testoutput}}]
