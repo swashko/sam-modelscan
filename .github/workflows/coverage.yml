@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8"]
 
     permissions:
         pull-requests: write
     outputs:
-        testoutput: S{{ steps.step1.outputs.test }}
+        testoutput: ${{ steps.step1.outputs.test }}
 
     steps:
       - id: step1
