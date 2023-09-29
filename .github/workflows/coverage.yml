@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8"]
 
     steps:
       - uses: actions/checkout@v2
@@ -50,7 +50,8 @@ jobs:
           OP_SECRET: op://app-cicd/"Better-Than-Bitwarden?"/Password
       - name: Run Coverage
         run: |
-          make coverage
+          pip install coverage
+          coverage run -m pytest
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
