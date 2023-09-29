@@ -1,9 +1,10 @@
+name: Coverage
 on:
     push:
       branches: main
     pull_request:
       branches: "*"
-  jobs:
+jobs:
     test:
       runs-on: ubuntu-latest
       env:
@@ -26,7 +27,7 @@ on:
           uses: actions/cache@v3
           with:
               path: .venv
-              key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+              key: venv-test-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
         - name: Install Dependencies
           run: |
             make install-test
