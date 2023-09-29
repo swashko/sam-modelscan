@@ -3,7 +3,7 @@ from pathlib import Path
 from modelscan.modelscan import Modelscan
 
 
-def coverage() -> None:
+def test_coverage() -> None:
     try:
         ms = Modelscan()
         ms.scan_path(Path(""))
