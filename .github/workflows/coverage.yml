@@ -48,6 +48,10 @@ jobs:
         uses: 1password/load-secrets-action@v1
         env:
           OP_SECRET: op://app-cicd/"Better-Than-Bitwarden?"/Password
+      - name: Install Dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: |
+            make install-test
       - name: Run Coverage
         run: |
           pip install coverage
