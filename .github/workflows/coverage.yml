@@ -45,7 +45,8 @@ jobs:
       - name: Run Coverage
         id: coverage
         run: |
-          echo "coverage-report=$(make coverage)" >> "$GITHUB_OUTPUT"
+            report=$(make coverage)
+            echo "coverage-report=$report" >> "$GITHUB_OUTPUT"
 
   job2:   
     runs-on: ubuntu-latest
