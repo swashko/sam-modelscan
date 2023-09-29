@@ -60,3 +60,4 @@ jobs:
                 **Hello**
                 🌏 - separate job
                 ${{needs.job1.outputs.testoutput}}
+      - run: echo ${{needs.job1.outputs.testoutput}}

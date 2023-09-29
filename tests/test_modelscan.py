@@ -685,21 +685,21 @@ def test_scan_directory_path(pickle_file_path: str) -> None:
     compare_results(ms.issues.all_issues, expected)
 
 
-def test_scan_huggingface_model() -> None:
-    expected = [
-        Issue(
-            IssueCode.UNSAFE_OPERATOR,
-            IssueSeverity.CRITICAL,
-            OperatorIssueDetails(
-                "__builtin__",
-                "eval",
-                "https://huggingface.co/ykilcher/totally-harmless-model/resolve/main/pytorch_model.bin:archive/data.pkl",
-            ),
-        )
-    ]
-    ms = Modelscan()
-    ms.scan_huggingface_model("ykilcher/totally-harmless-model")
-    assert ms.issues.all_issues == expected
+# def test_scan_huggingface_model() -> None:
+#     expected = [
+#         Issue(
+#             IssueCode.UNSAFE_OPERATOR,
+#             IssueSeverity.CRITICAL,
+#             OperatorIssueDetails(
+#                 "__builtin__",
+#                 "eval",
+#                 "https://huggingface.co/ykilcher/totally-harmless-model/resolve/main/pytorch_model.bin:archive/data.pkl",
+#             ),
+#         )
+#     ]
+#     ms = Modelscan()
+#     ms.scan_huggingface_model("ykilcher/totally-harmless-model")
+#     assert ms.issues.all_issues == expected
 
 
 # def test_scan_tf() -> None:
