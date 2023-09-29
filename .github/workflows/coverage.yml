@@ -36,6 +36,7 @@ jobs:
             make install-test
       - name: Run Coverage
         run: |
+            poetry add coverage codecov
             poetry run coverage run -m pytest
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
