@@ -32,7 +32,6 @@ jobs:
         - name: Run Coverage
           run: |
             pip install coverage
-            pip install pytest
             poetry add coverage codecov
             make coverage
         - name: Upload coverage reports to Codecov
