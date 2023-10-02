@@ -31,7 +31,6 @@ jobs:
             make install-test
         - name: Run Coverage
           run: |
-            pip install coverage
             poetry add coverage codecov
             make coverage
         - name: Upload coverage reports to Codecov
