@@ -46,7 +46,10 @@ jobs:
         pull-requests: write
       needs: test
       steps:
+        - name: Save output
+          run: |
+            ${{needs.test.outputs.coverage}} > pytest-coverage.txt
         - name: Comment coverage 
           uses: coroo/pytest-coverage-commentator@v1.0.2
           with:
-            pytest-coverage: ${{needs.test.outputs.coverage}}
+            pytest-coverage: pytest-coverage.txt
