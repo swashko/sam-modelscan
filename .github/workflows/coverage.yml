@@ -48,7 +48,7 @@ jobs:
       steps:
         - name: Save output
           run: |
-            echo ${{needs.test.outputs.coverage}} > pytest-coverage.txt
+            echo "${{needs.test.outputs.coverage}}" > pytest-coverage.txt
         - name: Comment coverage 
           uses: coroo/pytest-coverage-commentator@v1.0.2
           with:
