@@ -32,6 +32,6 @@ jobs:
         - name: Run Coverage
           run: |
             pip install coverage flake8
-            make coverage
-        - name: Comment coverage > pytest-coverage.txt
+            make coverage > pytest-coverage.txt
+        - name: Comment coverage 
           uses: coroo/pytest-coverage-commentator@v1.0.2
