@@ -41,4 +41,4 @@ format:
 	black .
 
 coverage:
-	poetry run pytest -v --cov=./
+	poetry run pytest --cov=./
