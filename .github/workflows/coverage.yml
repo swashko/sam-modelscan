@@ -7,6 +7,8 @@ on:
 jobs:
     test:
       runs-on: ubuntu-latest
+      outputs:
+        coverage: ${{ steps.coverage.outputs.coverage-report }}
       steps:
         - uses: actions/checkout@v2
         - name: Set up Python
@@ -30,8 +32,21 @@ jobs:
           run: |
             make install-test
         - name: Run Coverage
+          id: coverage
           run: |
-            pip install coverage flake8
-            make coverage > pytest-coverage.txt
+            {
+                pip install coverage flake8
+                echo 'coverage-report<<EOF'
+                make coverage
+                echo EOF
+            } >> "$GITHUB_OUTPUT"
+    comment:
+      runs-on: ubuntu-latest
+      permissions:
+        pull-requests: write
+      needs: test
+      steps:
         - name: Comment coverage 
           uses: coroo/pytest-coverage-commentator@v1.0.2
+          with:
+            pytest-coverage: [${{needs.test.outputs.coverage}}]
